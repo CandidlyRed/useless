@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="myscripts.js"></script>
+
+
+    <title>Your Lullaby!</title>
+
+</head>
+
+<body>
+
+    <br /><br />
+    <h2>Your Lullaby!</h2>
+    <br /><br />
+
+    <div id="results"></div>
+    <a href="index.html">Back to Form</a> <br />
+
+
+    <video id="1" controls>
+        <source src="1.mp4" type="video/mp4" />
+    </video>
+    <video id="2" controls>
+        <source src="2.mp4" type="video/mp4" />
+    </video>
+    <video id="3" controls>
+        <source src="3.mp4" type="video/mp4" />
+    </video>
+    <video id="4" controls>
+        <source src="4.mp4" type="video/mp4" />
+    </video>
+    <video id="5" controls>
+        <source src="5.mp4" type="video/mp4" />
+    </video>
+    <video id="6" controls>
+        <source src="6.mp4" type="video/mp4" />
+    </video>
+    <video id="7" controls>
+        <source src="7.mp4" type="video/mp4" />
+    </video>
+    <video id="8" controls>
+        <source src="8.mp4" type="video/mp4" />
+    </video>
+    <video id="9" controls>
+        <source src="9.mp4" type="video/mp4" />
+    </video>
+    <button onclick="playVideo()">Play Videos</button>
+    <script>function removeElement(elementId) {
+            // Removes an element from the document //
+
+            var element = document.getElementById(elementId);
+            element.parentNode.removeChild(element);
+        }
+
+        
+
+        const resultslist = document.getElementById('results');
+
+        var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        var imStupid = [];
+        var count = 0;
+        
+        new URLSearchParams(window.location.search).forEach((value, name) => {
+            resultslist.append(`${name}: ${value}`)
+            resultslist.append(document.createElement('br'));
+            arr.splice((value - 1) - count, 1);
+            imStupid.push(value);
+            ++count;
+            console.log(arr);
+
+        })
+        arr.forEach((value) => {
+            removeElement("" + value);
+        });
+
+        function playVideo() {
+            
+            imStupid.forEach(value => {
+                var vid = document.getElementById("" + value);
+                vid.muted = false;
+                vid.play();
+            });
+        }
+    </script>
+
+    <div>
+
+    </div>
+</body>
+</html>
